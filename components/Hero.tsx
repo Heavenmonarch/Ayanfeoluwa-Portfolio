@@ -291,7 +291,7 @@ function TypingScene() {
         href={profile.linkedin}
         target="_blank"
         rel="noreferrer"
-        className="pointer-events-auto absolute left-0 top-full mt-3 inline-flex min-h-12 items-center gap-3 whitespace-nowrap rounded-sm border border-ink bg-ink px-4 py-3 font-mono text-[clamp(12px,1.3cqw,16px)] font-bold uppercase leading-tight text-cream shadow-[0_4px_0_rgba(17,17,17,0.18)] transition-transform hover:translate-x-1"
+        className="pointer-events-auto absolute left-0 top-full mt-3 inline-flex min-h-12 items-center gap-3 whitespace-nowrap rounded-sm bg-ink px-4 py-3 font-mono text-[clamp(12px,1.3cqw,16px)] font-bold uppercase leading-tight text-cream shadow-[0_4px_0_rgba(17,17,17,0.18)] transition-transform hover:translate-x-1"
       >
         Click here to get my resume
         <ArrowDownToLine size={20} strokeWidth={1.8} />
