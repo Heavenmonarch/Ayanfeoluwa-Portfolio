@@ -1,7 +1,7 @@
 export default function Showcase() {
   const title = "Make APIs, apps & backends";
   const titleClass =
-    "whitespace-nowrap text-[clamp(2.4rem,7.4vw,6.4rem)] font-extrabold leading-none tracking-[-0.03em]";
+    "max-w-full whitespace-normal text-4xl font-extrabold leading-[0.94] tracking-[-0.03em] sm:text-5xl lg:text-6xl";
 
   return (
     <section
@@ -11,7 +11,7 @@ export default function Showcase() {
       <h2 className={`animate-rise-in relative z-[2] ${titleClass}`}>{title}</h2>
       <div
         aria-hidden="true"
-        className={`animate-pulse-soft mt-[0.9em] select-none opacity-30 blur-[14px] ${titleClass}`}
+        className={`animate-pulse-soft mt-[0.9em] hidden select-none opacity-30 blur-[14px] lg:block ${titleClass}`}
       >
         {title}
       </div>
@@ -25,7 +25,7 @@ export default function Showcase() {
 
       <div
         aria-hidden="true"
-        className="absolute bottom-[30%] right-[3%] z-[3] w-[52%] md:right-[6%] md:w-[clamp(240px,42%,560px)]"
+        className="absolute bottom-0 right-[3%] z-[3] w-[52%] md:right-[6%] md:w-[clamp(240px,42%,560px)]"
       >
         <div className="animate-float aspect-[16/10] rounded-t-xl border-[6px] border-b-8 border-[#0a0a0a] bg-[#f7f7f4] px-[9%] py-[8%] shadow-[0_30px_60px_rgba(0,0,0,0.35)] [animation-delay:400ms]">
           <div className="flex h-full flex-col gap-[8%]">
