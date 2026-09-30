@@ -9,6 +9,25 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ayanfeoluwa-adeogun",
 };
 
+export const frontendStack = [
+  "HTML",
+  "CSS",
+  "SCSS",
+  "JavaScript",
+  "TypeScript",
+  "React.js",
+  "Next.js",
+] as const;
+
+export const backendStack = [
+  "PHP",
+  "Python",
+  "Laravel",
+  "FastAPI",
+  "Flask",
+  "Spring Boot",
+] as const;
+
 export type Project = {
   title: string;
   description: string;

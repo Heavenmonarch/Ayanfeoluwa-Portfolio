@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Intro from "@/components/Intro";
 import Projects from "@/components/Projects";
+import Stack from "@/components/Stack";
 import Showcase from "@/components/Showcase";
 import Contact from "@/components/Contact";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <Intro />
       <Marquee text="Backend engineer with a knack for turning problems and opportunities into APIs." />
       <Projects />
+      <Stack />
       <Showcase />
       <Contact />
     </main>

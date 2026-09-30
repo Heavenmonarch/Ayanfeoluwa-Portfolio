@@ -24,16 +24,25 @@ function LinkedinMark() {
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", request: "" });
   const [open, setOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [draftLinks, setDraftLinks] = useState<{ gmail: string; mailto: string } | null>(null);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Project request from ${form.name}`);
-    const body = encodeURIComponent(
-      `Hi Ayanfe,\n\nName: ${form.name}\nEmail: ${form.email}\n\nRequest:\n${form.request}`,
-    );
-    setSubmitted(true);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    const subject = `Project request from ${form.name}`;
+    const body = `Hi Ayanfe,\n\nName: ${form.name}\nEmail: ${form.email}\n\nRequest:\n${form.request}`;
+    const gmailParams = new URLSearchParams({
+      view: "cm",
+      fs: "1",
+      to: profile.email,
+      su: subject,
+      body,
+    });
+    const mailtoParams = new URLSearchParams({ subject, body });
+
+    setDraftLinks({
+      gmail: `https://mail.google.com/mail/?${gmailParams.toString()}`,
+      mailto: `mailto:${profile.email}?${mailtoParams.toString()}`,
+    });
   };
 
   const updateField = (field: keyof typeof form, value: string) => {
@@ -87,22 +96,37 @@ export default function Contact() {
               </button>
             </div>
 
-            {submitted ? (
+            {draftLinks ? (
               <div className="mt-12 border-t border-white/20 pt-8">
-                <p className="text-[0.65rem] uppercase tracking-[0.12em] text-cream">Request sent</p>
+                <p className="text-[0.65rem] uppercase tracking-[0.12em] text-cream">Email draft ready</p>
                 <p className="mt-4 max-w-[440px] text-[clamp(1.6rem,4vw,2.8rem)] font-extrabold leading-none">
-                  Thanks. Your request is on its way.
+                  Finish sending your request.
                 </p>
                 <p className="mt-5 max-w-[420px] text-sm leading-[1.7] text-white/60">
-                  Your email app should now be open with the message addressed to {profile.email}.
+                  Open the prepared draft in Gmail, then review it and press send.
                 </p>
+                <a
+                  href={draftLinks.gmail}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-8 inline-flex items-center gap-3 border-b border-cream pb-2 text-sm text-cream"
+                >
+                  Open Gmail draft
+                  <Send size={18} strokeWidth={1.5} />
+                </a>
+                <a
+                  href={draftLinks.mailto}
+                  className="ml-6 mt-8 inline-flex border-b border-white/40 pb-2 text-sm text-white/70"
+                >
+                  Use default email app
+                </a>
                 <button
                   type="button"
                   onClick={() => {
-                    setSubmitted(false);
+                    setDraftLinks(null);
                     setForm({ name: "", email: "", request: "" });
                   }}
-                  className="mt-8 border-b border-cream pb-2 text-sm text-cream"
+                  className="ml-6 mt-8 border-b border-white/40 pb-2 text-sm text-white/70"
                 >
                   Send another request
                 </button>
